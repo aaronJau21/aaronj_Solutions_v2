@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
 import "aos/dist/aos.css";
-import AOS from "aos";
 import AOSProvider from "@/components/aos/AosProvider";
 
 const geistSans = Geist({
