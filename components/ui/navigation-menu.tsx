@@ -128,26 +128,28 @@ function NavigationMenuLink({
   return (
     <NavigationMenuPrimitive.Link
       className={cn(
-        "relative px-4 py-2 text-sm text-zinc-300 transition-colors",
-        "hover:text-white",
+        "relative px-4 py-2 text-sm transition-colors",
+        "text-foreground/70 hover:text-foreground",
 
-        // Línea futurista visible en fondos oscuros
+        /* Línea futurista dinámica basada en el color primary */
         "after:absolute after:left-1/2 after:bottom-0 after:-translate-x-1/2",
-        "after:h-[2px] after:w-0 after:bg-[#66ccff] after:rounded-full",
+        "after:h-[2px] after:w-0 after:bg-primary after:rounded-full",
         "after:transition-all after:duration-300 hover:after:w-full",
 
-        // Estado activo mucho más visible
-        "data-[active=true]:text-white",
-        "data-[active=true]:after:w-full data-[active=true]:after:bg-[#66ccff]",
+        /* Estado activo más visible */
+        "data-[active=true]:text-foreground",
+        "data-[active=true]:after:w-full data-[active=true]:after:bg-primary",
 
-        // Focus minimal pero claro
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#66ccff]/40 rounded-sm",
+        /* Focus ring usando tu sistema de ring */
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm",
+
         className
       )}
       {...props}
     />
   );
 }
+
 
 
 function NavigationMenuIndicator({
