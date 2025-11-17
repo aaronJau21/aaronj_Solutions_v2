@@ -1,10 +1,9 @@
 'use client';
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Moon, Sun } from "lucide-react";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
 import Link from "next/link";
+import { ThemeToggle } from "../ui/theme-toggle";
   
 export const Navbar = () => {
   return (
@@ -12,7 +11,7 @@ export const Navbar = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href={"/"}
-          className="text-2xl font-bold tracking-tight text-[#66ccff]"
+          className="text-2xl font-bold tracking-tight text-[#66ccff] hover:scale-105 transition-all duration-300"
         >
           <Image
             src="/logo.webp"
@@ -33,13 +32,7 @@ export const Navbar = () => {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <Button
-          variant="ghost"
-          size="icon"
-          className="text-[#f0f0f0] hover:bg-[#1a1a1a]"
-        >
-          <Moon className="h-5 w-5" />
-        </Button>
+        <ThemeToggle />
       </div>
     </header>
   );
