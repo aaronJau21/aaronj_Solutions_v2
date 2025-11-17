@@ -101,7 +101,7 @@ export const MainHome = () => {
       </div>
 
       {/* Imagen */}
-      <div className="flex-1 w-full lg:w-auto h-[400px] sm:h-[500px] lg:h-[600px] relative">
+      <div className="w-full h-[400px] sm:h-[500px] lg:h-[600px] lg:flex-1 relative">
         <HeroImage />
       </div>
     </main>

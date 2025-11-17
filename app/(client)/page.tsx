@@ -1,4 +1,5 @@
 import { MainHome } from "@/components/home/MainHome";
+import { ShowServicesHome } from "@/components/home/ShowServicesHome";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <>
       <MainHome />
+      <ShowServicesHome />
     </>
   );
 }
