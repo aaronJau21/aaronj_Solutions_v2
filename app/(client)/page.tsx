@@ -14,8 +14,15 @@ export const metadata: Metadata = {
     "Soluciones en IA",
     "Soluciones en seguridad",
     "Soluciones en bases de datos",
-    "Sistemas Webs"
+    "Sistemas Webs",
   ],
+  creator: "AaronJ Solutions",
+  publisher: "AaronJ Solutions",
+  applicationName: "AaronJ Solutions",
+  authors: [
+    { name: "AaronJ Solutions", url: "https://www.aaronjsolutions.com/" },
+  ],
+  robots: "index, follow",
 };
 
 export default function Home() {
