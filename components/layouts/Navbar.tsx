@@ -1,21 +1,24 @@
-'use client';
+"use client";
 
 import Image from "next/image";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "../ui/navigation-menu";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuList,
+} from "../ui/navigation-menu";
 import Link from "next/link";
 import { ThemeToggle } from "../ui/theme-toggle";
 // import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
-  
 
 interface Ilink {
-    label: string;
-    href: string;
+  label: string;
+  href: string;
 }
 
 export const Navbar = () => {
   // const { resolvedTheme } = useTheme();
-  
+
   // Usar resolvedTheme para manejar el tema del sistema
   // Si resolvedTheme es undefined (durante SSR), usar logo.webp por defecto
   // const logoSrc = resolvedTheme === 'dark' ? '/logo.webp' : '/logoLigth.jpeg';
@@ -26,9 +29,13 @@ export const Navbar = () => {
       href: "/",
     },
     {
-        label: "Servicios",
-        href: "/services",
-    }
+      label: "Servicios",
+      href: "/services",
+    },
+    {
+      label: "Contacto",
+      href: "/contact",
+    },
   ];
 
   return (
@@ -83,4 +90,3 @@ export const Navbar = () => {
     </header>
   );
 };
-  

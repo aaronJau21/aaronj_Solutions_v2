@@ -2,24 +2,60 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { 
-  FiGlobe, 
-  FiSmartphone, 
-  FiShoppingCart, 
-  FiFigma, 
-  FiSearch, 
+import {
+  FiGlobe,
+  FiSmartphone,
+  FiShoppingCart,
+  FiFigma,
+  FiSearch,
   FiShield,
   FiZap,
-  FiArrowRight
+  FiArrowRight,
 } from "react-icons/fi";
 
 const services = [
-  { icon: FiGlobe,        title: "Desarrollo Web a Medida",        description: "Sitios web modernos, rápidos y 100% adaptados con Next.js y Tailwind.", color: "from-blue-500 to-cyan-500" },
-  { icon: FiSmartphone,   title: "Aplicaciones Móviles",           description: "Apps nativas o multiplataforma para iOS y Android con la mejor experiencia.", color: "from-purple-500 to-pink-500" },
-  { icon: FiShoppingCart, title: "E-commerce & Tiendas Online",    description: "Tiendas online potentes con Shopify, WooCommerce o soluciones a medida.", color: "from-emerald-500 to-teal-500" },
-  { icon: FiFigma,        title: "Diseño UI/UX",                   description: "Diseños intuitivos y atractivos que convierten visitantes en clientes.", color: "from-orange-500 to-red-500" },
-  { icon: FiSearch,       title: "Optimización SEO",               description: "Posicionamiento real en Google para atraer clientes cualificados.", color: "from-indigo-500 to-purple-500" },
-  { icon: FiShield,       title: "Mantenimiento & Soporte 24/7",   description: "Seguridad, actualizaciones y soporte continuo. Tú solo crece.", color: "from-rose-500 to-pink-500" },
+  {
+    icon: FiGlobe,
+    title: "Desarrollo Web a Medida",
+    description:
+      "Sitios web modernos, rápidos y 100% adaptados con Next.js y Tailwind.",
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    icon: FiSmartphone,
+    title: "Aplicaciones Móviles",
+    description:
+      "Apps nativas o multiplataforma para iOS y Android con la mejor experiencia.",
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    icon: FiShoppingCart,
+    title: "E-commerce & Tiendas Online",
+    description:
+      "Tiendas online potentes con Shopify, WooCommerce o soluciones a medida.",
+    color: "from-emerald-500 to-teal-500",
+  },
+  {
+    icon: FiFigma,
+    title: "Diseño UI/UX",
+    description:
+      "Diseños intuitivos y atractivos que convierten visitantes en clientes.",
+    color: "from-orange-500 to-red-500",
+  },
+  {
+    icon: FiSearch,
+    title: "Optimización SEO",
+    description:
+      "Posicionamiento real en Google para atraer clientes cualificados.",
+    color: "from-indigo-500 to-purple-500",
+  },
+  {
+    icon: FiShield,
+    title: "Mantenimiento & Soporte 24/7",
+    description:
+      "Seguridad, actualizaciones y soporte continuo. Tú solo crece.",
+    color: "from-rose-500 to-pink-500",
+  },
 ];
 
 export const MainServices = () => {
@@ -39,8 +75,13 @@ export const MainServices = () => {
               Nuestros Servicios
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
-            Soluciones digitales completas diseñadas para llevar tu negocio al siguiente nivel.
+          <p
+            className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            Soluciones digitales completas diseñadas para llevar tu negocio al
+            siguiente nivel.
           </p>
         </div>
 
@@ -60,11 +101,15 @@ export const MainServices = () => {
               >
                 <Card className="group relative bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 h-full">
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                    <div className={`absolute inset-0 bg-linear-to-br ${service.color} opacity-10`} />
+                    <div
+                      className={`absolute inset-0 bg-linear-to-br ${service.color} opacity-10`}
+                    />
                   </div>
 
                   <div className="relative p-8 lg:p-10">
-                    <div className={`w-16 h-16 rounded-2xl bg-linear-to-br ${service.color} p-3 mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
+                    <div
+                      className={`w-16 h-16 rounded-2xl bg-linear-to-br ${service.color} p-3 mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}
+                    >
                       <Icon className="w-10 h-10 text-white" />
                     </div>
 
@@ -76,10 +121,10 @@ export const MainServices = () => {
                       {service.description}
                     </p>
 
-                    <div className="flex items-center gap-2 text-primary font-medium group-hover:translate-x-2 transition-transform duration-300 cursor-pointer">
+                    {/* <div className="flex items-center gap-2 text-primary font-medium group-hover:translate-x-2 transition-transform duration-300 cursor-pointer">
                       <span>Saber más</span>
                       <FiArrowRight className="w-5 h-5" />
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-white/20 to-transparent rounded-full blur-3xl translate-x-16 -translate-y-16 group-hover:translate-x-8 group-hover:-translate-y-8 transition-transform duration-700 pointer-events-none" />
