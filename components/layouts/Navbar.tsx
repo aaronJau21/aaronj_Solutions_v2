@@ -50,6 +50,8 @@ export const Navbar = () => {
             alt="Logo de Aaron Js Solutions"
             width={130}
             height={130}
+            className="h-auto w-auto"
+            priority
           />
         </Link>
 

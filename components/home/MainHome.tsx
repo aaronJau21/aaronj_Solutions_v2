@@ -23,7 +23,7 @@ function HeroImage() {
               src="/home/hero-3d.png"
               alt="Equipo de desarrollo trabajando"
               fill
-              className="object-cover"
+              className="object-cover h-auto"
               priority
               quality={90}
             />
