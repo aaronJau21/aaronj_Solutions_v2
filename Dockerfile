@@ -16,8 +16,10 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 # Stage 2: Install dependencies
 FROM base AS deps
 
-# Instalar dependencias
-RUN pnpm install --frozen-lockfile
+# Instalar dependencias sin ejecutar scripts postinstall
+# Esto evita errores con scripts que no son necesarios (como Prisma)
+# Next.js manejará las dependencias nativas durante el build si es necesario
+RUN pnpm install --frozen-lockfile --ignore-scripts
 
 # Stage 3: Build
 FROM base AS builder
@@ -33,6 +35,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
 # Construir la aplicación
+# Next.js build manejará las dependencias necesarias
 RUN pnpm build
 
 # Stage 4: Runner
