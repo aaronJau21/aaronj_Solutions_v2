@@ -2,43 +2,50 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 function HeroImage() {
-    return (
-      <div className="hero-float relative w-full h-full overflow-hidden rounded-2xl">
-        {/* Contenedor principal con entrada blur + flotación */}
-        <div
-          className="relative w-full h-full"
-          style={{
-            // 1. Entrada: blur + slide (1s)
-            // 2. Luego: flotación infinita (12s)
-            animation: `
+  return (
+    <div className="hero-float relative w-full h-full overflow-hidden rounded-2xl">
+      {/* Contenedor principal con entrada blur + flotación */}
+      <div
+        className="relative w-full h-full"
+        style={{
+          // 1. Entrada: blur + slide (1s)
+          // 2. Luego: flotación infinita (12s)
+          animation: `
               blurInRight 1s cubic-bezier(0.22, 1, 0.36, 1) forwards,
               floatHorizontal 12s ease-in-out infinite 1s
             `,
-          }}
-        >
-          <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src="/home/hero-3d.png"
-              alt="Equipo de desarrollo trabajando"
-              fill
-              className="object-cover h-auto"
-              priority
-              quality={90}
-            />
-            <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
-          </div>
+        }}
+      >
+        <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
+          <Image
+            src="/home/hero-3d.png"
+            alt="Equipo de desarrollo trabajando"
+            fill
+            className="object-cover h-auto"
+            priority
+            quality={90}
+          />
+          <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
         </div>
-  
-        {/* Sombras */}
-        <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl -z-10 animate-pulse" />
-        <div className="absolute -inset-2 bg-accent/5 rounded-2xl blur-xl -z-10" />
       </div>
-    );
-  }
+
+      {/* Sombras */}
+      <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl -z-10 animate-pulse" />
+      <div className="absolute -inset-2 bg-accent/5 rounded-2xl blur-xl -z-10" />
+    </div>
+  );
+}
 
 export const MainHome = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/services");
+  };
+
   return (
     <main className="relative flex flex-col lg:flex-row w-full min-h-[85vh] items-center justify-between gap-12 lg:gap-16 px-4 sm:px-6 lg:px-8 xl:px-12 py-12 lg:py-20 overflow-hidden">
       {/* Fondo decorativo */}
@@ -71,16 +78,17 @@ export const MainHome = () => {
           <Button
             size="lg"
             className="text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            onClick={() => handleClick()}
           >
             Conoce nuestros servicios
           </Button>
-          <Button
+          {/* <Button
             variant="outline"
             size="lg"
             className="text-base px-8 py-6 border-2 hover:bg-accent/10 transition-all duration-300"
           >
             Ver portafolio
-          </Button>
+          </Button> */}
         </div>
 
         {/* Indicadores (opcional: animar también) */}

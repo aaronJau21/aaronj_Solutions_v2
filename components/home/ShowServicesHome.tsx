@@ -2,7 +2,14 @@
 
 import React from "react";
 import { FaBrain, FaCode, FaHtml5, FaMobile } from "react-icons/fa";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "../ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "../ui/card";
+import { useRouter } from "next/navigation";
 
 interface Service {
   name: string;
@@ -14,6 +21,12 @@ interface Service {
 }
 
 export const ShowServicesHome = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/services");
+  };
+
   const services: Service[] = [
     {
       name: "Desarrollo Web",
@@ -63,7 +76,8 @@ export const ShowServicesHome = () => {
             Nuestros <span className="text-primary">Servicios</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Soluciones digitales completas para llevar tu negocio al siguiente nivel.
+            Soluciones digitales completas para llevar tu negocio al siguiente
+            nivel.
           </p>
           <div className="h-1 w-24 bg-linear-to-r from-primary to-accent mx-auto mt-6 rounded-full" />
         </div>
@@ -94,7 +108,10 @@ export const ShowServicesHome = () => {
                   >
                     {service.icon}
                   </div>
-                  <CardTitle id={`service-${service.name}`} className="text-xl font-semibold">
+                  <CardTitle
+                    id={`service-${service.name}`}
+                    className="text-xl font-semibold"
+                  >
                     {service.name}
                   </CardTitle>
                 </CardHeader>
@@ -116,7 +133,10 @@ export const ShowServicesHome = () => {
           data-aos-once="true"
           className="text-center mt-16"
         >
-          <button className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 hover:shadow-xl transition-all duration-300 hover:scale-105">
+          <button
+            onClick={() => handleClick()}
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium hover:bg-primary/90 hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
             Explorar todos los servicios
           </button>
         </div>

@@ -28,7 +28,7 @@ export const Footer = () => {
             </p>
             <div className="flex gap-5">
               <Link
-                href="https://instagram.com/tuusuario"
+                href="https://www.instagram.com/aaro.njsolutions/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground/70 hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
@@ -36,15 +36,15 @@ export const Footer = () => {
               >
                 <FaInstagram size={24} />
               </Link>
-              <Link
-                href="https://linkedin.com/company/tuempresa"
+              {/* <Link
+                href="https://www.linkedin.com/in/aaronj-solutions-109351397/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground/70 hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin size={24} />
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

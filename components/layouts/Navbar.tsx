@@ -8,8 +8,10 @@ import {
 } from "../ui/navigation-menu";
 import Link from "next/link";
 import { ThemeToggle } from "../ui/theme-toggle";
-// import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface Ilink {
   label: string;
@@ -17,11 +19,7 @@ interface Ilink {
 }
 
 export const Navbar = () => {
-  // const { resolvedTheme } = useTheme();
-
-  // Usar resolvedTheme para manejar el tema del sistema
-  // Si resolvedTheme es undefined (durante SSR), usar logo.webp por defecto
-  // const logoSrc = resolvedTheme === 'dark' ? '/logo.webp' : '/logoLigth.jpeg';
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const links: Ilink[] = [
     {
@@ -39,24 +37,25 @@ export const Navbar = () => {
   ];
 
   return (
-    <header className="w-full border-b border-white/50 bg-background text-foreground shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <header className="w-full border-b border-white/50 bg-background text-foreground shadow-sm sticky top-0 z-50">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+        {/* Logo */}
         <Link
           href={"/"}
-          className="text-2xl font-bold tracking-tight text-[#66ccff] hover:scale-105 transition-all duration-300"
+          className="text-2xl font-bold tracking-tight text-[#66ccff] hover:scale-105 transition-all duration-300 shrink-0"
         >
           <Image
             src="/logo.webp"
             alt="Logo de Aaron Js Solutions"
             width={130}
             height={130}
-            className="h-auto w-auto"
+            className="h-auto w-auto max-w-[100px] sm:max-w-[110px] md:max-w-[130px]"
             priority
           />
         </Link>
 
-        {/* Navbar Links */}
-        <NavigationMenu>
+        {/* Desktop Navbar Links */}
+        <NavigationMenu className="hidden md:flex">
           <NavigationMenuList>
             <NavigationMenuItem>
               {links.map((link) => (
@@ -64,7 +63,7 @@ export const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "relative px-4 py-2 text-sm transition-colors",
+                    "relative px-3 lg:px-4 py-2 text-sm lg:text-base transition-colors",
                     "text-foreground/70 hover:text-foreground",
 
                     /* Línea futurista dinámica basada en el color primary */
@@ -87,8 +86,48 @@ export const Navbar = () => {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <ThemeToggle />
+        {/* Right side: Theme Toggle + Mobile Menu */}
+        <div className="flex items-center gap-2 sm:gap-4">
+          <ThemeToggle />
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </Button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-border bg-background">
+          <nav className="px-4 py-4 space-y-2">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className={cn(
+                  "block px-4 py-3 text-base font-medium rounded-md transition-colors",
+                  "text-foreground/70 hover:text-foreground hover:bg-accent",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
