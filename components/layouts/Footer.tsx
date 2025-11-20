@@ -1,6 +1,6 @@
 "use client";
 
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 
 export const Footer = () => {
