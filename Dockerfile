@@ -15,7 +15,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # 👇 Esta línea es obligatoria para Dockploy
-COPY .env.production ./
+COPY .env ./
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
