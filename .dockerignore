@@ -1,26 +1,33 @@
 # Dependencies
 node_modules
-.pnpm-store
-.pnpm-debug.log
+.pnp
+.pnp.js
+
+# Testing
+coverage
+.nyc_output
 
 # Next.js
 .next
 out
 dist
+build
 
-# Testing
-coverage
-.nyc_output
+# Production
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Misc
 .DS_Store
 *.pem
 
 # Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+.vscode
+.idea
 
 # Local env files
 .env*.local
@@ -29,39 +36,16 @@ pnpm-debug.log*
 # Vercel
 .vercel
 
-# Typescript
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
-
-# IDE
-.vscode
-.idea
-*.swp
-*.swo
-*~
 
 # Git
 .git
 .gitignore
-.gitattributes
+README.md
 
 # Docker
 Dockerfile
 .dockerignore
 docker-compose.yml
-
-# Documentation
-README.md
-*.md
-
-# CI/CD
-.github
-.gitlab-ci.yml
-
-# Logs
-logs
-*.log
-
-# OS
-Thumbs.db
-
