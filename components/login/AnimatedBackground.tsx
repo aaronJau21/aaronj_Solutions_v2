@@ -9,14 +9,14 @@ export default function AnimatedBackground() {
 
   useEffect(() => {
     // pre-carga simple (por si)
-    const imgs = [
-      "/login/login.webp",
-      "/login/login2.webp"
-    ].map(src => {
-      const i = new Image();
-      i.src = src;
-      return i;
-    });
+    // const imgs = [
+    //   "/login/login.webp",
+    //   "/login/login2.webp"
+    // ].map(src => {
+    //   const i = new Image();
+    //   i.src = src;
+    //   return i;
+    // });
 
     const ctx = gsap.context(() => {
       // movimiento suave y continuo del overlay

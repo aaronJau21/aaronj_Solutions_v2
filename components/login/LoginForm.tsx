@@ -20,7 +20,6 @@ export const LoginForm = () => {
 
   const onSubmit: SubmitHandler<IInputs> = async (data) => {
     try {
-      console.log(data);
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/auth/client/login`,
         {
