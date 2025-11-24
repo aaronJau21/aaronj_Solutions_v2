@@ -7,7 +7,6 @@ import {
   NavigationMenuList,
 } from "../ui/navigation-menu";
 import Link from "next/link";
-import { ThemeToggle } from "../ui/theme-toggle";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -88,7 +87,6 @@ export const Navbar = () => {
 
         {/* Right side: Theme Toggle + Mobile Menu */}
         <div className="flex items-center gap-2 sm:gap-4">
-          <ThemeToggle />
 
           {/* Mobile Menu Button */}
           <Button
