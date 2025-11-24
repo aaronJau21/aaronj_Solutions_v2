@@ -1,6 +1,6 @@
 "use client";
 
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 
 export const Footer = () => {
@@ -36,7 +36,7 @@ export const Footer = () => {
               >
                 <FaInstagram size={24} />
               </Link>
-              {/* <Link
+              <Link
                 href="https://www.linkedin.com/in/aaronj-solutions-109351397/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -44,7 +44,7 @@ export const Footer = () => {
                 aria-label="LinkedIn"
               >
                 <FaLinkedin size={24} />
-              </Link> */}
+              </Link>
             </div>
           </div>
         </div>
