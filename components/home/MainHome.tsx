@@ -77,7 +77,7 @@ export const MainHome = () => {
         <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-blur-in-left animation-delay-300">
           <Button
             size="lg"
-            className="text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            className="text-base px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
             onClick={() => handleClick()}
           >
             Conoce nuestros servicios
@@ -92,7 +92,7 @@ export const MainHome = () => {
         </div>
 
         {/* Indicadores (opcional: animar también) */}
-        <div className="flex flex-wrap gap-6 pt-8 border-t border-border/50 animate-blur-in-left animation-delay-400">
+        {/* <div className="flex flex-wrap gap-6 pt-8 border-t border-border/50 animate-blur-in-left animation-delay-400">
           <div className="flex flex-col">
             <span className="text-2xl font-bold text-primary">+15</span>
             <span className="text-sm text-muted-foreground">Proyectos</span>
@@ -105,7 +105,7 @@ export const MainHome = () => {
             <span className="text-2xl font-bold text-primary">24/7</span>
             <span className="text-sm text-muted-foreground">Soporte</span>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Imagen */}
