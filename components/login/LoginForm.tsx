@@ -1,3 +1,5 @@
+"use client";
+
 import { Label } from "@radix-ui/react-label";
 import { CardContent } from "../ui/card";
 import { Input } from "../ui/input";
@@ -19,23 +21,16 @@ export const LoginForm = () => {
   });
 
   const onSubmit: SubmitHandler<IInputs> = async (data) => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/client/login`,
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
-
-      console.log(await response.json());
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const res = await response.json();
+    console.log(res);
   };
 
   return (
