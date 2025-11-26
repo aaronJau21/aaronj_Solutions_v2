@@ -60,14 +60,14 @@ export const LoginForm = () => {
 
         <div className="flex items-center justify-between">
           <Link
-            href="/forgot"
+            href="/auth/register"
             className="text-sm text-white/60 hover:underline"
           >
             Registrate
           </Link>
 
           <Link
-            href="/forgot"
+            href="/auth/forgot-password"
             className="text-sm text-white/60 hover:underline"
           >
             ¿Olvidaste tu contraseña?
