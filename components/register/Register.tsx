@@ -5,9 +5,18 @@ import { CardContent } from "../ui/card";
 import { Input } from "../ui/input";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { User, Building2, Phone, Mail, Lock } from "lucide-react";
+import {
+  User,
+  Building2,
+  Phone,
+  Mail,
+  Lock,
+  CheckCircle2Icon,
+} from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
+import { Alert, AlertTitle } from "../ui/alert";
+import { useRouter } from "next/navigation";
 
 interface IInputs {
   name: string;
@@ -18,10 +27,18 @@ interface IInputs {
 }
 
 export const Register = () => {
-  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
 
-  const { register, handleSubmit, reset } = useForm<IInputs>({
+  const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<IInputs>({
     defaultValues: {
       name: "",
       company: "",
@@ -32,7 +49,6 @@ export const Register = () => {
   });
 
   const onSubmit: SubmitHandler<IInputs> = async (data) => {
-    setError(null);
     setLoading(true);
 
     try {
@@ -48,32 +64,41 @@ export const Register = () => {
       const res = await response.json();
 
       if (!response.ok) {
-        const errorMessage = Array.isArray(res.message)
-          ? res.message.join(", ")
-          : res.message || "Error al registrar usuario";
-        setError(errorMessage);
+        setError(true);
         return;
       }
 
       console.log(res);
       reset();
-      setError(null);
       setLoading(false);
-      // Aquí podrías redirigir al usuario o mostrar un mensaje de éxito
+      setSuccess(true);
     } catch (e) {
-      setError("Error de conexión. Por favor, intenta nuevamente.");
       console.error(e);
+      setError(true);
     } finally {
       setLoading(false);
+      setTimeout(() => {
+        setSuccess(false);
+        setError(false);
+      }, 5000);
+      router.push("/auth/login");
     }
   };
   return (
     <CardContent className="px-8 pt-6 pb-10">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {success && (
+        <Alert variant="success" className="mb-5">
+          <CheckCircle2Icon />
+          <AlertTitle>Se registró el usuario correctamente</AlertTitle>
+        </Alert>
+      )}
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
         {/* Mensaje de error */}
         {error && (
           <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm">
-            {error}
+            <Alert>
+              <AlertTitle>Error al registrar el usuario</AlertTitle>
+            </Alert>
           </div>
         )}
         {/* Nombre completo y Compañia */}
@@ -85,14 +110,19 @@ export const Register = () => {
               Nombre completo
             </Label>
             <Input
-              required
               type="text"
               placeholder="Juan Pérez"
               className="h-12 bg-white/5 border border-white/10 text-white placeholder:text-white/40 
                        focus:border-cyan-400/60 focus:bg-white/8 
                        transition-all duration-200 rounded-xl"
-              {...register("name")}
+              {...register("name", {
+                required: "El nombre completo es obligatorio",
+              })}
             />
+
+            {errors.name && (
+              <p className="text-xs text-red-400">{errors.name.message}</p>
+            )}
           </div>
 
           {/* Compañía */}
@@ -102,14 +132,19 @@ export const Register = () => {
               Compañía
             </Label>
             <Input
-              required
               type="text"
               placeholder="Mi Empresa SAC"
               className="h-12 bg-white/5 border border-white/10 text-white placeholder:text-white/40 
                        focus:border-cyan-400/60 focus:bg-white/8 
                        transition-all duration-200 rounded-xl"
-              {...register("company")}
+              {...register("company", {
+                required: "El nombre de la empresa es obligatorio",
+              })}
             />
+
+            {errors.company && (
+              <p className="text-xs text-red-400">{errors.company.message}</p>
+            )}
           </div>
         </div>
 
@@ -121,14 +156,19 @@ export const Register = () => {
               Teléfono
             </Label>
             <Input
-              required
               type="tel"
               placeholder="+51 987 654 321"
               className="h-12 bg-white/5 border border-white/10 text-white placeholder:text-white/40 
                        focus:border-cyan-400/60 focus:bg-white/8 
                        transition-all duration-200 rounded-xl"
-              {...register("phone")}
+              {...register("phone", {
+                required: "El teléfono es obligatorio",
+              })}
             />
+
+            {errors.phone && (
+              <p className="text-xs text-red-400">{errors.phone.message}</p>
+            )}
           </div>
 
           {/* Email */}
@@ -138,14 +178,19 @@ export const Register = () => {
               Correo electrónico
             </Label>
             <Input
-              required
               type="email"
               placeholder="tu@ejemplo.com"
               className="h-12 bg-white/5 border border-white/10 text-white placeholder:text-white/40 
                        focus:border-cyan-400/60 focus:bg-white/8 
                        transition-all duration-200 rounded-xl"
-              {...register("email")}
+              {...register("email", {
+                required: "El correo electrónico es obligatorio",
+              })}
             />
+
+            {errors.email && (
+              <p className="text-xs text-red-400">{errors.email.message}</p>
+            )}
           </div>
         </div>
 
@@ -156,14 +201,19 @@ export const Register = () => {
             Contraseña
           </Label>
           <Input
-            required
             type="password"
             placeholder="••••••••"
             className="h-12 bg-white/5 border border-white/10 text-white placeholder:text-white/40 
                        focus:border-cyan-400/60 focus:bg-white/8 
                        transition-all duration-200 rounded-xl"
-            {...register("password")}
+            {...register("password", {
+              required: "La contraseña es obligatoria",
+            })}
           />
+
+          {errors.password && (
+            <p className="text-xs text-red-400">{errors.password.message}</p>
+          )}
         </div>
 
         {/* Enlaces */}

@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
+import { FaRegUserCircle } from "react-icons/fa";
 
 interface Ilink {
   label: string;
@@ -87,7 +88,9 @@ export const Navbar = () => {
 
         {/* Right side: Theme Toggle + Mobile Menu */}
         <div className="flex items-center gap-2 sm:gap-4">
-
+          <Link href="/auth/register">
+            <FaRegUserCircle />
+          </Link>
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
