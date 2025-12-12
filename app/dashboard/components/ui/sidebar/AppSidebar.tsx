@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -34,7 +35,13 @@ export const AppSidebar = () => {
   return (
     <Sidebar>
       <SidebarHeader>
-        <SidebarTrigger onClick={toggleSidebar} />
+        <div className="flex items-center justify-between">
+          <Button className="rounded-full bg-primary py-1 px-3 cursor-pointer">
+            <p className="text-white font-bold text-sm">A</p>
+          </Button>
+
+          <SidebarTrigger onClick={toggleSidebar} />
+        </div>
       </SidebarHeader>
 
       <SidebarContent>
@@ -43,7 +50,10 @@ export const AppSidebar = () => {
             {sidebarItems.map((item) => (
               <SidebarMenuItem key={item.label}>
                 <SidebarMenuButton>
-                  <Link href={item.href} className="flex items-center gap-x-2 cursor-pointer">
+                  <Link
+                    href={item.href}
+                    className="flex items-center gap-x-2 cursor-pointer"
+                  >
                     {item.icon}
                     {item.label}
                   </Link>
